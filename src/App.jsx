@@ -1,36 +1,39 @@
-import { useState } from "react";
-import Sidebar from "./components/Sidebar";
-import NewProjectForm from "./components/NewProjectForm";
-import { v4 as uuidv4 } from "uuid";
-import ShowProject from "./components/ShowProject";
-import StartScreen from "./components/StartScreen";
+import { useState } from 'react'
+import Sidebar from './components/Sidebar'
+import NewProjectForm from './components/NewProjectForm'
+import { v4 as uuidv4 } from 'uuid'
+import ShowProject from './components/ShowProject'
+import StartScreen from './components/StartScreen'
 
 function App() {
   const [projectData, setProjectData] = useState({
     projects: [
       {
         id: uuidv4(),
-        title: "Learning React",
-        description: "something",
-        due: "23.01.2018",
+        title: 'Learning React',
+        description:
+          'Mastering the fundamentals and advanced concepts of building dynamic user interfaces using React.js library',
+        due: new Date('2018-01-23'),
       },
       {
         id: uuidv4(),
-        title: "Learning Express",
-        description: "something2",
-        due: "14.11.2012",
+        title: 'Learning Express',
+        description:
+          'Delving into the world of Node.js web application development by mastering Express.js, a powerful framework for building robust and scalable web applications',
+        due: new Date('2012-11-14'),
       },
       {
         id: uuidv4(),
-        title: "Learning JS",
-        description: "something3",
-        due: "27.06.2007",
+        title: 'Learning JS',
+        description:
+          'Exploring the core concepts and intricacies of JavaScript programming language to build dynamic and interactive web applications',
+        due: new Date('2007-06-27'),
       },
     ],
     tasks: [],
-  });
+  })
 
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null)
 
   const handleAddTask = (text) => {
     setProjectData((prevData) => {
@@ -38,51 +41,51 @@ function App() {
         text: text,
         projectId: selectedProject,
         id: uuidv4(),
-      };
+      }
       return {
         ...prevData,
         tasks: [newTask, ...prevData.tasks],
-      };
-    });
-  };
+      }
+    })
+  }
 
   const handleDeleteTask = (id) => {
     setProjectData((currData) => {
       return {
         ...currData,
         tasks: currData.tasks.filter((t) => t.id !== id),
-      };
-    });
-  };
+      }
+    })
+  }
 
   const handleProjectClick = (projectId) => {
-    setSelectedProject(projectId);
-  };
+    setSelectedProject(projectId)
+  }
 
   const removeProject = (id) => {
     setProjectData((currData) => {
       return {
         ...currData,
         projects: currData.projects.filter((p) => p.id !== id),
-      };
-    });
-    setSelectedProject(null);
-  };
+      }
+    })
+    setSelectedProject(null)
+  }
 
   const handleDisplayingForm = () => {
-    setSelectedProject("form");
-  };
+    setSelectedProject('form')
+  }
 
   const addProject = (formData) => {
     setProjectData((prevData) => {
-      return { ...prevData, projects: [...prevData.projects, formData] };
-    });
-    setSelectedProject(formData.id);
-  };
+      return { ...prevData, projects: [...prevData.projects, formData] }
+    })
+    setSelectedProject(formData.id)
+  }
 
   const cancelForm = () => {
-    setSelectedProject(null);
-  };
+    setSelectedProject(null)
+  }
 
   return (
     <main className="h-screen my-8 flex gap-8">
@@ -106,13 +109,13 @@ function App() {
             onDeleteTask={handleDeleteTask}
           />
         )}
-        {selectedProject === "form" && (
+        {selectedProject === 'form' && (
           <NewProjectForm createProject={addProject} cancelForm={cancelForm} />
         )}
         {!selectedProject && <StartScreen setForm={handleDisplayingForm} />}
       </div>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
