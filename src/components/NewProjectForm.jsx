@@ -1,29 +1,29 @@
-import { useRef, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import Input from "./Input";
-import Button from "./Button";
-import Modal from "./Modal";
+import { useRef } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import Input from './Input'
+import Button from './Button'
+import Modal from './Modal'
 
 function NewProjectForm({ createProject, cancelForm }) {
-  const modalRef = useRef();
+  const modalRef = useRef()
 
-  const titleRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const dueDateRef = useRef(null);
+  const titleRef = useRef(null)
+  const descriptionRef = useRef(null)
+  const dueDateRef = useRef(null)
 
   const handleSaveClick = (e) => {
-    e.preventDefault();
-    const title = titleRef.current.value;
-    const description = descriptionRef.current.value;
-    const dueDate = dueDateRef.current.value;
+    e.preventDefault()
+    const title = titleRef.current.value
+    const description = descriptionRef.current.value
+    const dueDate = dueDateRef.current.value
 
     if (
-      title.trim() === "" ||
-      description.trim() === "" ||
-      dueDate.trim() === ""
+      title.trim() === '' ||
+      description.trim() === '' ||
+      dueDate.trim() === ''
     ) {
-      modalRef.current.open();
-      return;
+      modalRef.current.open()
+      return
     }
 
     const newProject = {
@@ -31,9 +31,9 @@ function NewProjectForm({ createProject, cancelForm }) {
       title,
       description,
       due: dueDate,
-    };
-    createProject(newProject);
-  };
+    }
+    createProject(newProject)
+  }
 
   return (
     <>
@@ -65,7 +65,7 @@ function NewProjectForm({ createProject, cancelForm }) {
         <Input label="due date" type="date" ref={dueDateRef} />
       </form>
     </>
-  );
+  )
 }
 
-export default NewProjectForm;
+export default NewProjectForm
