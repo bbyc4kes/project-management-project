@@ -5,7 +5,7 @@ function Sidebar({ inputData, selectedProject, onProjectClick, setForm }) {
         Your Projects
       </h2>
       <button
-        className="px-4 py-2 text-xs md:text-base rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100"
+        className="px-4 py-2 text-xs md:text-base rounded-md bg-stone-700 text-stone-400 hover:bg-stone-600 hover:text-stone-100 duration-200"
         onClick={setForm}
       >
         + Add Project
@@ -15,20 +15,20 @@ function Sidebar({ inputData, selectedProject, onProjectClick, setForm }) {
           return (
             <li
               key={project.id}
-              className={`flex flex-col gap-1 my-4 bg-opacity-25 p-1 hover:text-stone-100 hover:bg-stone-300 hover:bg-opacity-25 ${
+              className={`flex flex-col gap-1 my-4 bg-opacity-25 p-1 duration-200 cursor-pointer rounded-r-md hover:text-stone-100 hover:bg-stone-300 hover:bg-opacity-25 ${
                 selectedProject === project.id
-                  ? "text-stone-100 bg-stone-300"
-                  : ""
+                  ? 'text-stone-100 bg-stone-300'
+                  : ''
               }`}
               onClick={() => onProjectClick(project.id)}
             >
               {project.title}
             </li>
-          );
+          )
         })}
       </ul>
     </aside>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

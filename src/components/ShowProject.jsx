@@ -1,6 +1,4 @@
-import { useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
-import Tasks from "./Tasks";
+import Tasks from './Tasks'
 
 function ShowProject({
   tasks,
@@ -9,11 +7,11 @@ function ShowProject({
   onAddTask,
   onDeleteTask,
 }) {
-  const formattedDate = new Date(project.due).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const formattedDate = new Date(project.due).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 
   return (
     <>
@@ -23,7 +21,7 @@ function ShowProject({
             {project.title}
           </h1>
           <button
-            className="text-stone-600 hover:text-stone-950"
+            className="text-stone-600 duration-200 py-2 px-4 rounded-md hover:bg-stone-200 hover:text-stone-950"
             onClick={() => removeProject(project.id)}
           >
             Delete
@@ -38,7 +36,7 @@ function ShowProject({
       </header>
       <Tasks onAdd={onAddTask} onDelete={onDeleteTask} tasks={tasks} />
     </>
-  );
+  )
 }
 
-export default ShowProject;
+export default ShowProject
