@@ -1,4 +1,4 @@
-# Project Management Project
+# <p align="center">Project Management Project</p>
 
 The Project Management Project is a web application built to streamline project management tasks efficiently. It provides users with tools to organize, track, and collaborate on projects effectively.
 
